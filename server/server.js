@@ -16,10 +16,8 @@ import medicineRoutes from "./routes/medicineRoutes.js";
 import deliveryRoutes from "./routes/deliveryRoutes.js";
 import searchRoutes from "./routes/searchRoutes.js";
 
-// Load Environment Variables
 dotenv.config();
 
-// Connect MongoDB
 connectDB();
 
 const app = express();
