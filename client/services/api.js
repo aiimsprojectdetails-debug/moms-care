@@ -1,7 +1,11 @@
 import axios from "axios";
 
+  const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://moms-care-67gqehda0-momscare.vercel.app";
+
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
+  baseURL: `${API_URL}/api`,
   headers: {
     "Content-Type": "application/json",
   },
