@@ -10,7 +10,6 @@ import authRoutes from "./routes/authRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import patientRoutes from "./routes/patientRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
 import ancVisitRoutes from "./routes/ancVisitRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import medicineRoutes from "./routes/medicineRoutes.js";
@@ -70,8 +69,6 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/patients", patientRoutes);
 
 app.use("/api/dashboard", dashboardRoutes);
-
-app.use("/api/upload", uploadRoutes);
 
 app.use("/api/anc", ancVisitRoutes);
 
