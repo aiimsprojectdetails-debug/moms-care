@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: process.env.NEXT_PUBLIC_API_URL + "/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -33,7 +33,6 @@ API.interceptors.response.use(
     ) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-
       window.location.href = "/login";
     }
 
