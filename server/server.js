@@ -26,12 +26,21 @@ const app = express();
    Middlewares
 ------------------------------ */
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      process.env.CLIENT_URL,
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -114,7 +123,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(
-    `🚀 Mom's Care Backend running on http://localhost:${PORT}`
-  );
+  console.log(`🚀 Mom's Care Backend running on http://localhost:${PORT}`);
 });
