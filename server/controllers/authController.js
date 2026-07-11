@@ -109,21 +109,20 @@ export const registerUser = async (req, res) => {
 ===================================================== */
 
 export const loginUser = async (req, res) => {
+
+  console.log("========== LOGIN REQUEST ==========");
+  console.log("Request Body:", req.body);
+
   try {
     const { email, password } = req.body;
 
-    // Validate Input
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "Email and password are required.",
-      });
-    }
+    console.log("Finding user...");
 
-    // Find User
     const user = await User.findOne({
       email: email.toLowerCase(),
     });
+
+    console.log("User Found:", user);
 
     if (!user) {
       return res.status(401).json({
@@ -132,16 +131,11 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    // Check Active Status
-    if (!user.isActive) {
-      return res.status(403).json({
-        success: false,
-        message: "Your account has been disabled.",
-      });
-    }
+    console.log("Checking password...");
 
-    // Compare Password
     const isMatch = await user.matchPassword(password);
+
+    console.log("Password Match:", isMatch);
 
     if (!isMatch) {
       return res.status(401).json({
@@ -150,12 +144,12 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    // Generate JWT
     const token = generateToken(user._id);
 
-    // Remove Password
     const userResponse = user.toObject();
     delete userResponse.password;
+
+    console.log("Login Successful!");
 
     return res.status(200).json({
       success: true,
@@ -165,11 +159,13 @@ export const loginUser = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Login Error:", error);
+
+    console.error("LOGIN ERROR:");
+    console.error(error);
 
     return res.status(500).json({
       success: false,
-      message: "Server Error",
+      message: error.message,
     });
   }
 };
