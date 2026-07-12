@@ -5,10 +5,11 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 
 import connectDB from "../config/db.js";
-
 import authRoutes from "../routes/authRoutes.js";
 
 dotenv.config();
+
+console.log("CLIENT_URL =", process.env.CLIENT_URL);
 
 await connectDB();
 
