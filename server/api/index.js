@@ -7,6 +7,14 @@ import morgan from "morgan";
 import connectDB from "../config/db.js";
 import authRoutes from "../routes/authRoutes.js";
 import projectRoutes from "../routes/projectRoutes.js";
+import patientRoutes from "../routes/patientRoutes.js"
+
+import dashboardRoutes from "../routes/dashboardRoutes.js";
+import ancVisitRoutes from "..ancVisitRoutes.js";
+import appointmentRoutes from ".appointmentRoutes.js";
+import medicineRoutes from "..medicineRoutes.js";
+import deliveryRoutes from "../routes/deliveryRoutes.js";
+import searchRoutes from "../routes/searchRoutes.js";
 
 dotenv.config();
 
@@ -50,6 +58,21 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+
 app.use("/api/projects", projectRoutes);
+
+app.use("/api/patients", patientRoutes);
+
+app.use("/api/dashboard", dashboardRoutes);
+
+app.use("/api/anc", ancVisitRoutes);
+
+app.use("/api/appointments", appointmentRoutes);
+
+app.use("/api/medicines", medicineRoutes);
+
+app.use("/api/deliveries", deliveryRoutes);
+
+app.use("/api/search", searchRoutes);
 
 export default app;
