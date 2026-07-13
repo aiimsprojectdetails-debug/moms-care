@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { createProject } from "@/services/projectService";
+import { deleteProject } from "@/services/projectService";
 import { useRouter } from "next/navigation";
 
 import {
