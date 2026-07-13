@@ -10,9 +10,9 @@ import projectRoutes from "../routes/projectRoutes.js";
 import patientRoutes from "../routes/patientRoutes.js"
 
 import dashboardRoutes from "../routes/dashboardRoutes.js";
-import ancVisitRoutes from "..ancVisitRoutes.js";
-import appointmentRoutes from ".appointmentRoutes.js";
-import medicineRoutes from "..medicineRoutes.js";
+import ancVisitRoutes from "../routes/ancVisitRoutes.js";
+import appointmentRoutes from "../routes/appointmentRoutes.js";
+import medicineRoutes from "../routes/medicineRoutes.js";
 import deliveryRoutes from "../routes/deliveryRoutes.js";
 import searchRoutes from "../routes/searchRoutes.js";
 
