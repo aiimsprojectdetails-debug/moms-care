@@ -184,14 +184,15 @@ export const createPatient = async (req, res) => {
       message: "Patient registered successfully.",
       patient,
     });
-  } catch (error) {
-    console.error("Create Patient Error:", error);
+ } catch (error) {
+  console.log("========== CREATE PATIENT ERROR ==========");
+  console.error(error);
 
-    return res.status(500).json({
-      success: false,
-      message: "Server Error",
-    });
-  }
+  return res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+}
 };
 
 /* =====================================================
