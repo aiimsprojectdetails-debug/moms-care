@@ -6,6 +6,7 @@ import morgan from "morgan";
 
 import connectDB from "../config/db.js";
 import authRoutes from "../routes/authRoutes.js";
+import projectRoutes from "../routes/projectRoutes.js";
 
 dotenv.config();
 
@@ -49,5 +50,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
 
 export default app;
